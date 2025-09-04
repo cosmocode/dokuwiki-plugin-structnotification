@@ -109,7 +109,7 @@ class action_plugin_structnotification_notification extends ActionPlugin
                     $search->addColumn($special_column);
                 }
                 $this->addFiltersToSearch($search, $filters);
-                $result = $search->execute();
+                $result = $search->getRows();
                 $result_pids = $search->getPids();
                 /* @var Value[] $row */
                 $counter = count($result);
