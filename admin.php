@@ -97,6 +97,8 @@ class admin_plugin_structnotification extends AdminPlugin
         echo '<h1>' . $this->getLang('menu') . '</h1>';
         echo '<div class="table"><table>';
 
+        echo $this->locale_xhtml('intro');
+
         echo '<tr>';
         foreach ($this->headers as $header) {
             echo '<th>' . $this->getLang('admin header ' . $header) . '</th>';

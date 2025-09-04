@@ -1,0 +1,7 @@
+To schedule a notification, first enter a struct field containing a date. Choose when the notification should be sent: it can be X days before / after the date. If you use the "at" operator, enter a time as "Value" and the notification will be scheduled for the given time on the date.
+
+You can define additional struct filters to check if a notification should be created, e.g. "Status != done". Multiple filters (one per line) will be joined by "AND".
+
+Recipient configuration may combine usernames, groups with the usual "@" prefix, and struct placeholders like "@@schema.field@@"
+
+The message can also include struct placeholders.
