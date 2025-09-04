@@ -109,8 +109,23 @@ class action_plugin_structnotification_notification extends ActionPlugin
                     $search->addColumn($special_column);
                 }
                 $this->addFiltersToSearch($search, $filters);
+
+                // temporary workaround for GETACCESSLEVEL check in struct queries in closed wikis:
+                // cli user has undefined permissions, so we disable ACLs to get any results at all
+                if (PHP_SAPI === 'cli') {
+                    global $conf;
+                    $origACL = $conf['useacl'];
+                    $conf['useacl'] = false;
+                }
+
                 $result = $search->getRows();
                 $result_pids = $search->getPids();
+
+                // restore ACL setting
+                if (PHP_SAPI === 'cli') {
+                    $conf['useacl'] = $origACL;
+                }
+
                 /* @var Value[] $row */
                 $counter = count($result);
 
